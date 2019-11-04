@@ -54,7 +54,10 @@ struct MasterView: View {
                 NavigationLink(
                     destination: DetailView(event: event)
                 ) {
-                    Text("\(event.timestamp!, formatter: dateFormatter)")
+                    VStack {
+                        Text("\(event.timestamp!, formatter: dateFormatter)")
+                        Text(event.notes!)
+                    }
                 }
             }.onDelete { indices in
                 self.events.delete(at: indices, from: self.viewContext)
@@ -67,7 +70,10 @@ struct DetailView: View {
     @ObservedObject var event: Event
 
     var body: some View {
-        Text("\(event.timestamp!, formatter: dateFormatter)")
+        VStack {
+            Text("\(event.timestamp!, formatter: dateFormatter)")
+            Text(event.notes!)
+        }
             .navigationBarTitle(Text("Detail"))
     }
 }

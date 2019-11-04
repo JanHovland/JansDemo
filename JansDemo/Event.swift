@@ -13,7 +13,8 @@ extension Event {
     static func create(in managedObjectContext: NSManagedObjectContext){
         let newEvent = self.init(context: managedObjectContext)
         newEvent.timestamp = Date()
-        
+        newEvent.notes = "Dette er enda et nytt notat andre gang"
+
         do {
             try  managedObjectContext.save()
         } catch {
